@@ -3,6 +3,7 @@ const { Category, Product } = require('../../models');
 
 // The `/api/categories` endpoint
 
+// GET request to show data for all categories in the db
 router.get('/', async (req, res) => {
   try {
     const categories = await Category.findAll({
@@ -14,6 +15,7 @@ router.get('/', async (req, res) => {
   }
 });
 
+// GET request to show data for a specific Category
 router.get('/:id', async (req, res) => {
   try {
     const singleCat = await Category.findByPk(req.params.id, {
@@ -31,6 +33,7 @@ router.get('/:id', async (req, res) => {
   }
 });
 
+// POST method used to create a new Category
 router.post('/', async (req, res) => {
   try {
     const newCat = await Category.create(
@@ -42,57 +45,28 @@ router.post('/', async (req, res) => {
   }
 });
 
-router.put('/:id', (req, res) => {
-  // update product data
-  Category.update(req.body, {
-    where: {
-      id: req.params.id,
-    },
-  })
-    .then((category) => {
-      
-      return Category.findAll({ where: { category_id: req.params.id } });
+// PUT method used to update a Category name
+router.put('/:id', async (req, res) => {
+  try {
+    const updateCat = await Category.update(req.body,
+      {
+        where: {
+          id: req.params.id,
+        }
     })
-    .then((catID) => {
 
-      const newcatID = req.body.category_id
-        .filter((cat_id) => !newcatID.includes(cat_id))
-        .map((cat_id) => {
-          return {
-            category_id: req.params.id,
-          };
-        });
-      // figure out which ones to remove
-      const catIDToRemove = catID
-        .filter(({ cat_id }) => !req.body.category_id.includes(cat_id))
-        .map(({ id }) => id);
+    if (!updateCat) {
+      res.status(404).json('No category was found with this ID!')
+    }
 
-      // run both actions
-      return Promise.all([
-        Category.destroy({ where: { id: catIDToRemove } }),
-        Category.bulkCreate(newcatID),
-      ]);
-    })
-    .then((updatedCategory) => res.json(updatedCategory))
-    .catch((err) => {
-      console.log(err);
-      res.status(400).json(err);
-    });
+    res.status(200).json('Updated Category Name!')
+
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
-// router.put('/:id', async (req, res) => {
-//   try {
-//     const updateCat = await Category.update({
-//       where: {
-//         category_id: req.body.category_id,
-//       },
-//     });
-//     res.status(200).json(updateCat);
-//   } catch (err) {
-//     res.status(400).json(err);
-//   }
-// });
-
+// DELETE method used to delete a particular category
 router.delete('/:id', async (req, res) => {
   try {
     const deleteCat = await Category.destroy({
