@@ -18,10 +18,10 @@ This is a project to implement GET, POST, PUT and DELETE requests for an API.
 ## Installation
 
 npm i
-- dotenv 8.2.0
-- express 4.17.1
-- mysql2 2.1.0
-- sequelize 5.21.7
+- [dotenv](https://www.npmjs.com/package/dotenv) - Version 8.2.0
+- [express](https://www.npmjs.com/package/express) - Version 4.17.1
+- [mysql2](https://www.npmjs.com/package/mysql2) - Version 2.1.0
+- [sequelize](https://www.npmjs.com/package/sequelize) - Version 5.21.7
 
 ## Deployment
 
@@ -36,6 +36,8 @@ To use this application, navigate to the directory of your project and install t
 - Then type `node seeds/index.js` to allow the database to be seeded
 - After the database is seeded, type `node server` to turn the server on
 - From there, you can then make API requests using the Insomnia tool or by `http://localhost:3001/api/`
+
+I used the Insomnia tool in order to demonstrate making the API requests. A link to that walkthrough video can be found [here](https://drive.google.com/file/d/1wVoWQOtGp7qpjpL5nxG_F6zOy8B_R3b8/view?usp=share_link)
 
 ## Collaborators
 
