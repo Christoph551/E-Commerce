@@ -9,7 +9,7 @@ This is a project to implement GET, POST, PUT and DELETE requests for an API.
 ## Table of contents
 
 - [Installation](#Insallation)
-- [Deployment](#Deployment)
+- [Demonstration](#Demonstration)
 - [Usage](#Usage)
 - [Contribution](#Contributing)
 - [Test](#Test)
@@ -23,9 +23,10 @@ npm i
 - [mysql2](https://www.npmjs.com/package/mysql2) - Version 2.1.0
 - [sequelize](https://www.npmjs.com/package/sequelize) - Version 5.21.7
 
-## Deployment
+## Demonstration
 
-https://github.com/Christoph551/E-Commerce
+I have recorded a demonstration video of this tool being run in the command line and the Insomnia tool to test the routes.
+Walkthrough Video: https://drive.google.com/file/d/167bveZEot6NNBjhkurOw8yu9S6AW6pfQ/view?usp=share_link
 
 ## Usage
 
@@ -33,11 +34,10 @@ To use this application, navigate to the directory of your project and install t
 
 - SOURCE the schema file and then ensure to use the database
 - Then quit from the sql terminal
-- Then type `node seeds/index.js` to allow the database to be seeded
-- After the database is seeded, type `node server` to turn the server on
-- From there, you can then make API requests using the Insomnia tool or by `http://localhost:3001/api/`
+- Then type `npm run seed` to allow the database to be seeded
+- After the database is seeded, type `npm run watch` to initialize nodemon to keep the server running
+- From there, you can then make API requests using the Insomnia tool by `http://localhost:3001/api/`
 
-I used the Insomnia tool in order to demonstrate making the API requests. A link to that walkthrough video can be found [here](https://drive.google.com/file/d/1wVoWQOtGp7qpjpL5nxG_F6zOy8B_R3b8/view?usp=share_link)
 
 ## Collaborators
 

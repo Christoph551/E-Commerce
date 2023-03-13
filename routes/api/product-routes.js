@@ -23,7 +23,7 @@ router.get('/:id', async (req, res) => {
     });
 
     if (!singleProd) {
-      res.status(404).json({ message: 'No product found with that id!' });
+      res.status(404).json('No product found with that id!');
       return;
     }
 
@@ -121,7 +121,7 @@ router.delete('/:id', async (req, res) => {
       return;
     }
 
-    res.status(200).json(deleteProduct);
+    res.status(200).json('You have successfully deleted a product!');
   } catch (err) {
     res.status(500).json(err);
   }
